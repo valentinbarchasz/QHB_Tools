@@ -354,7 +354,7 @@ void ProcessDecodedMessage(short command, unsigned short payloadLength, unsigned
                     double PPSTimeStamp =(double) BUILD_UINT64(payload[7],payload[6],payload[5],payload[4],payload[3],payload[2],payload[1],payload[0]);
                     PPSTimeStamp *= 10;     //Pour avoir une unité en nano-seconde (Freq Horloge interne pic32 = 100MHz)
 
-                    if (lastPPSTimeStampNS > PPSTimeStamp)
+                    if (PPSTimeStamp>lastPPSTimeStampNS)
                     {
                         lastPPSTimeStampNS = PPSTimeStamp;
                         //OnGPSPPSFromQHB(PPSTimeStamp);
