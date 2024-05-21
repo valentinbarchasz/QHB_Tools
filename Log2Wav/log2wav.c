@@ -238,7 +238,7 @@ int main(int argc, char* argv[]){
       if(sensorsFile !=NULL)
       {
         //On extrait la valeur du timeStamp MHz de fin de paquet courant
-        fprintf(sensorsFile,"PACKET TIMESTAMP: %ld\n",timeStamp100MHzCurrentPacket);
+        fprintf(sensorsFile,"PACKET TIMESTAMP: %llu\n",timeStamp100MHzCurrentPacket);
         //On decode les msg du buffer additionnel
         for(int i=enteteSize;i<hdr.sizeOfAdditionnalDataBuffer-enteteSize; i++)
         {
