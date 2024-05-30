@@ -102,7 +102,7 @@ void DecodeMessage(unsigned char c, FILE* sensorFile)
                 }
                 else
                 {
-                    printf("erreur Checksum");
+                    //printf("erreur Checksum");
                 }
                 rcvState = Waiting;
             }

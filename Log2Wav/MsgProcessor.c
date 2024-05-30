@@ -341,7 +341,7 @@ void ProcessDecodedMessage(short command, unsigned short payloadLength, unsigned
                         {
                             lastGPSDate = gpsDatas.dateOfFix;
                             //OnGPSDataFromQHB(gpsDatas);
-                            fprintf(sensorsFile, "GPS, %d/%d/%d %d:%d:%d ", gpsDatas.dateOfFix.year,gpsDatas.dateOfFix.month, gpsDatas.dateOfFix.day,
+                            fprintf(sensorsFile, "GPS, %04d/%02d/%02d %02d:%02d:%02d ", gpsDatas.dateOfFix.year,gpsDatas.dateOfFix.month, gpsDatas.dateOfFix.day,
                                                                             gpsDatas.dateOfFix.hour,gpsDatas.dateOfFix.minute,gpsDatas.dateOfFix.second);
                             fprintf(sensorsFile, "fix:%d, fixQual:%d, Lat:%f %c, lon: %f %c,", gpsDatas.fix,gpsDatas.fixQuality, gpsDatas.latitude, gpsDatas.latitudeDirection,
                                                                             gpsDatas.longitude,gpsDatas.longitudeDirection);
@@ -351,14 +351,14 @@ void ProcessDecodedMessage(short command, unsigned short payloadLength, unsigned
                 break;
             case (short)GPS_PPS_PACKET:
                 {
-                    double PPSTimeStamp =(double) BUILD_UINT64(payload[7],payload[6],payload[5],payload[4],payload[3],payload[2],payload[1],payload[0]);
+                    unsigned long long PPSTimeStamp =BUILD_UINT64(payload[7],payload[6],payload[5],payload[4],payload[3],payload[2],payload[1],payload[0]);
                     PPSTimeStamp *= 10;     //Pour avoir une unité en nano-seconde (Freq Horloge interne pic32 = 100MHz)
 
                     if (PPSTimeStamp>lastPPSTimeStampNS)
                     {
                         lastPPSTimeStampNS = PPSTimeStamp;
                         //OnGPSPPSFromQHB(PPSTimeStamp);
-                        fprintf(sensorsFile, "PPS:%lf\n", PPSTimeStamp);
+                        fprintf(sensorsFile, "PPS:%llu\n", PPSTimeStamp);
                     }
                 }
                 break;

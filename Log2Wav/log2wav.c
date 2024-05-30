@@ -233,6 +233,7 @@ int main(int argc, char* argv[]){
                   additionnalDataBlock[9],
                   additionnalDataBlock[8],
                   additionnalDataBlock[7]);
+      timeStamp100MHzCurrentPacket*=10;     //To put the ts in ns
       enteteSize=16;
 
       if(sensorsFile !=NULL)
