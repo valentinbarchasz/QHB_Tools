@@ -188,7 +188,7 @@ void ProcessDecodedMessage(short command, unsigned short payloadLength, unsigned
                                             dataXYZ.Z=BUILD_INT16(payload[17 + 2*datasize+ i * lengthPerSample],payload[17 +2*datasize+ i * lengthPerSample+1]);
                                         }
                                         SensorXYZData datas=NormalizeSensorsDatas(dataXYZ, rangeScale, resolutionBits);
-                                        fprintf(sensorsFile, "ACCEL, %d, %f,%f,%f\n", timeStamp, datas.X,datas.Y,datas.Z);
+                                        fprintf(sensorsFile, "ACCEL, %d, %lf,%lf,%lf\n", timeStamp, datas.X,datas.Y,datas.Z);
                                     }
                                     else
                                     {
@@ -213,7 +213,7 @@ void ProcessDecodedMessage(short command, unsigned short payloadLength, unsigned
                                             dataXYZ.Z=BUILD_INT16(payload[17 + 2*datasize+ i * lengthPerSample],payload[17 +2*datasize+ i * lengthPerSample+1]);
                                         }
                                         SensorXYZData datas=NormalizeSensorsDatas(dataXYZ, rangeScale, resolutionBits);
-                                        fprintf(sensorsFile, "GYRO, %d, %f,%f,%f\n", timeStamp, datas.X,datas.Y,datas.Z);
+                                        fprintf(sensorsFile, "GYRO, %d, %lf,%lf,%lf\n", timeStamp, datas.X,datas.Y,datas.Z);
                                     }
                                     else
                                     {
@@ -234,12 +234,12 @@ void ProcessDecodedMessage(short command, unsigned short payloadLength, unsigned
                                         unsigned char datasize = (resolutionBits / 8);
                                         if(datasize==2)
                                         {
-                                            dataXYZ.X=BUILD_INT16(payload[17 + i * lengthPerSample],payload[17 + i * lengthPerSample+1]);
-                                            dataXYZ.Y=BUILD_INT16(payload[17 + datasize+ i * lengthPerSample],payload[17 +datasize+ i * lengthPerSample+1]);
-                                            dataXYZ.Z=BUILD_INT16(payload[17 + 2*datasize+ i * lengthPerSample],payload[17 +2*datasize+ i * lengthPerSample+1]);
+                                            dataXYZ.X=BUILD_INT16(payload[17 + i * lengthPerSample+1],payload[17 + i * lengthPerSample]);
+                                            dataXYZ.Y=BUILD_INT16(payload[17 + datasize+ i * lengthPerSample+1],payload[17 +datasize+ i * lengthPerSample]);
+                                            dataXYZ.Z=BUILD_INT16(payload[17 + 2*datasize+ i * lengthPerSample+1],payload[17 +2*datasize+ i * lengthPerSample]);
                                         }
                                         SensorXYZData datas=NormalizeSensorsDatas(dataXYZ, rangeScale, resolutionBits);
-                                        fprintf(sensorsFile, "MAG, %d, %f,%f,%f\n", timeStamp, datas.X,datas.Y,datas.Z);
+                                        fprintf(sensorsFile, "MAG, %d, %lf,%lf,%lf\n", timeStamp, datas.X,datas.Y,datas.Z);
                                     }
                                     else
                                     {
