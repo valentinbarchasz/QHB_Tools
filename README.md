@@ -2,8 +2,6 @@
 
 This repository holds the code and executables to extract data from the .log files recorded by the SMIOT QHB audio cards.
 
-## Code
-
 ## Executables
 
 The executables can be found in the __Release__ folder, see below for how to use them.
