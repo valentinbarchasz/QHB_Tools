@@ -1,0 +1,5 @@
+Attention,
+
+Certaines cartes QHB V2 doivent avoir le fichier de configuration (JConfig.cfg) placé dans un repertoire "Config" sur ca carte µSD de configuration.
+
+Pour les dernieres version du code embarqué des QHB V2, le fichier JConfig.CFG doit etre placé a la racine de la carte µSD de config.
